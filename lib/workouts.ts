@@ -22,7 +22,7 @@ export const WORKOUT_IMAGE = "/images/workout.webp";
 
 export async function getWorkouts(): Promise<Workout[]> {
   try {
-    const res = await fetch("https://api.abcz.workers.dev/api/fitlog", {
+    const res = await fetch("https://api.api-store.workers.dev/api/fitlog", {
       next: { revalidate: 3600 }, 
     });
     if (!res.ok) return [];
@@ -36,7 +36,7 @@ export async function getWorkouts(): Promise<Workout[]> {
 
 export async function getWorkout(idOrSlug: string): Promise<Workout | undefined> {
   try {
-    const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${idOrSlug}`, {
+    const res = await fetch(`https://api.api-store.workers.dev/api/fitlog/${idOrSlug}`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) return undefined;

@@ -12,7 +12,7 @@ import {
 import { getWorkouts, type Workout } from "@/lib/workouts"; 
 
 export const PLAN_CAP = 5;
-const STORAGE_KEY = "fitlog:api-v2"; 
+const STORAGE_KEY = "fitlog:api-v3"; 
 
 interface PlanEntry {
   slug: string;
@@ -47,7 +47,7 @@ function readStorage(): StoredState {
     if (!raw) return { plan: [], saved: [] };
     const parsed = JSON.parse(raw) as Partial<StoredState>;
     
-    // 🔴 আল্ট্রা-সেফটি: ডেটা স্ট্রিং বা নাম্বার যাই হোক না কেন, এটি নিজে থেকেই ফিক্স করে নেবে
+  
     const plan = (parsed.plan ?? [])
       .filter((e) => e && e.slug != null)
       .map((e) => ({ ...e, slug: String(e.slug) }));
